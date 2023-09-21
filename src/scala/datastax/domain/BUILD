@@ -7,33 +7,26 @@ scala_library(
     visibility = ["//visibility:public"],
     deps = [
         "//3rdparty/jvm/at/favre/lib:bcrypt",
-        "//3rdparty/jvm/com/datastax/oss:java_driver_mapper_runtime",
-    ],
-)
-
-scala_import(
-    name = "domain-classes",
-    jars = [
-        ":domain",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-mapper_processor(
-    name = "mapper-src",
-    input = ":domain-classes",
-    visibility = ["//visibility:public"],
-    deps = [
         "//3rdparty/jvm/com/datastax/oss:java_driver_mapper_processor",
+        "//3rdparty/jvm/com/datastax/oss:java_driver_mapper_runtime",
+        "//tools:mapper-processor",
     ],
 )
 
-java_library(
-    name = "mapper",
-    srcs = [":mapper-src"],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":domain",
-        "//3rdparty/jvm/com/datastax/oss:java_driver_mapper_runtime",
-    ],
-)
+#scala_import(
+#    name = "domain-classes",
+#    jars = [
+#        ":domain",
+#    ],
+#    visibility = ["//visibility:public"],
+#)
+#
+#java_library(
+#    name = "mapper",
+#    srcs = [":domain-classes"],
+#    visibility = ["//visibility:public"],
+#    deps = [
+#        ":domain",
+#        "//3rdparty/jvm/com/datastax/oss:java_driver_mapper_runtime",
+#    ],
+#)

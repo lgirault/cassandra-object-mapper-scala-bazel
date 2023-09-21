@@ -36,7 +36,7 @@ mapper_processor = rule(
             providers = [java_common.JavaToolchainInfo],
         ),
         "_plugin": attr.label(
-            default = Label("//tools:mapper-processor-pluggin"),
+            default = Label("//tools:mapper-processor-plugin"),
         ),
     },
     fragments = ["java"],
